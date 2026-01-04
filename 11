@@ -1,0 +1,100 @@
+以下內容皆出自於AI，但有自行消化理解部分
+ch6 
+    虛擬機1->算術與堆疊運算
+        核心觀念
+            1.虛擬機VM
+                A.將高階語言抽象化，讓程式不用直接面對硬體指令
+                B.提供統一的運算與存取介面
+            2.指令類型
+                A.算數&邏輯運算:add, sub, neg, eq, gt, lt, and, or, not
+                B.堆疊操作：push segment index, pop segment index
+            3.Segment概念
+                constant、local、argument、this、that、temp、pointer、static
+        本單元目標
+            1.認識VM指令結構以及堆疊原理
+            2.將簡單的運算換成VM指令
+            3.能手動追蹤 stack 的變化（push/pop）
+ch7
+    虛擬機2->函數與呼叫
+        核心概念
+            1.函數呼叫的堆疊模型
+                A.call functionName nArgs：將參數與返回地址壓入堆疊
+                B.return：回到呼叫點並恢復堆疊
+            2.Segment 管理
+                A.每個函數有自己的 local segment
+                B.argument segment 存放傳入參數
+            3.控制流
+                A.條件跳轉：if-goto、goto
+                B.標籤管理：label
+        本單元目標
+            1.理解 call stack（函數堆疊）
+            2.能把遞迴或多層函數轉換成 VM 指令
+            3.能追蹤 segment 與堆疊變化
+
+ch8
+    編譯器1->從 Jack 到 VM 語法分析
+        核心概念
+            1.Jack 語言基礎
+                A.面向對象：class, field, method, constructor, function
+                B.語法結構：語句、表達式、運算符
+            2.編譯器前端
+                A.Tokenizer：將文字程式拆成 token
+                B.Parser：建立抽象語法樹（AST）
+                C.Syntax Tree：結構化表示程式
+        本單元目標
+            1.能手動將 Jack 程式拆成 Token
+            2.能理解 AST 的結構
+            3.能將高階語言的運算與控制結構映射到 VM 指令
+ch9
+    編譯器2->從 VM 到 Hack 程式碼生成
+        核心概念
+            1.編譯器後端
+                A.VM 指令 → Hack 組合語言
+                B.處理運算、堆疊、函數呼叫
+            2.程式碼生成原則
+                A.每個 VM 指令對應一段 Hack 代碼
+                B.處理跳轉、返回地址、堆疊指標
+        本單元目標
+            1.能將算術運算、函數呼叫、控制流轉成 Hack 指令
+            2.理解 Hack CPU 運作和 stack pointer 對應
+            3.掌握程式碼生成器的核心流程
+ch10
+    運算與程式控制整合
+        核心概念
+            1.高階語言到硬體的完整流程
+                A.Jack → VM → Hack → CPU
+            2.控制結構映射
+                A.條件判斷、迴圈、函數呼叫
+            3.錯誤處理與除錯
+                A.追蹤程式流與堆疊變化
+        本單元目標
+            1.能編譯複雜運算式與程式控制到 Hack
+            2.嘗試修改控制流，觀察對 Hack 指令的影響
+            3.手動追蹤函數呼叫與堆疊操作
+ch11
+    作業系統基礎1->記憶體與I/O抽象
+        核心概念
+            1.簡單作業系統角色
+                A.提供抽象（檔案系統、螢幕 I/O）
+                B.管理資源（記憶體、堆疊、暫存器）
+            2.Jack API 與作業系統介面
+                A.Math、String、Array、Screen、Keyboard 類別
+            3.I/O 與記憶體抽象
+                A.程式不直接操作硬體，而透過 OS API
+        本單元目標
+            1.能使用 Jack 提供的 OS API 寫程式
+            2.理解 I/O 抽象如何隔離硬體細節
+            3.掌握簡單記憶體分配與管理概念
+ch12
+    作業系統基礎2->遊戲與應用程式開發
+        核心概念
+            1.應用程式開發
+                A.將前面學的抽象層整合：Jack → VM → Hack → CPU
+            2.完整程式執行流程
+                A.記憶體、堆疊、函數呼叫、控制流
+            3.小型遊戲或應用
+                A.例如 Pong 遊戲，操作螢幕、鍵盤與計算
+        本單元目標
+            1.能編寫完整 Jack 應用程式
+            2.理解所有抽象層的交互
+            3.能透過實作鞏固編譯器、VM、硬體知識
